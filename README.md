@@ -1,7 +1,10 @@
 
 ### Purpose
 
-This server will display coverage data
+This server will display test coverage data. The data is stored in the /coverage directory
+
+<p>
+
 Start the server, HTTP POST some data to the server, and then `GET localhost:6969/coverage`
 
 ### Installing
