@@ -6,8 +6,10 @@ Start the server, HTTP POST some data to the server, and then `GET localhost:696
 
 ### Installing
 
-git clone
+```javascript
+git clone https://github.com/ORESoftware/express-istanbul.git
 npm install
+```
 
 
 ## Running the server
@@ -27,9 +29,7 @@ exports.loadCoverage = function (driver, yourHost, yourPort) {
   return async function(cb) {
 
     await driver.switchTo().defaultContent();
-    let obj = await driver.executeScript(
-      'return window.__coverage__;'
-    );
+    let obj = await driver.executeScript('return window.__coverage__;');
 
     let str = JSON.stringify(obj);
     let options = {
@@ -41,6 +41,7 @@ exports.loadCoverage = function (driver, yourHost, yourPort) {
         'Content-Type': 'application/json',
       }
     };
+    
     let req = http.request(options, res => {
 
       let data = '';
@@ -55,6 +56,7 @@ exports.loadCoverage = function (driver, yourHost, yourPort) {
        cb();  // fire the final callback
       });
     });
+    
     req.write(str);
     req.end();
 
